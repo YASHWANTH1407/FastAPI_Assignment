@@ -27,7 +27,7 @@ def read_book(book_id:int,db:Session=Depends(get_db)):
 
 #update a book by its id
 @router.put("books/{book_id}",response_model=BookResponse)
-def update_existing_book(book_id:int,updated_data:BookCerate,db:Session=Depends(get_db)):
+def update_existing_book(book_id:int,updated_data:BookCreate,db:Session=Depends(get_db)):
     book=update_book(db,book_id,updated_data)
     if not book:
         raise HTTPException(status_code=404,detail="Book not found")
